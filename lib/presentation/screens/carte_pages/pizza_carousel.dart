@@ -11,7 +11,7 @@ class _PizzaCarouselState extends State<PizzaCarousel> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Carousel"),
+      child: Text("PIZZA Carousel"),
     );
   }
 }

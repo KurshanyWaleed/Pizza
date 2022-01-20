@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:j_pizza/bloC/cubit/screen_indicator_cubit.dart';
 import 'package:j_pizza/bloC/cubit/screen_indicator_state.dart';
-import 'package:j_pizza/presentation/screens/boissan.dart';
-import 'package:j_pizza/presentation/screens/carte.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/boissan_carousel.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/carte.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/dessert_carousel.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/entree_carousel.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/sandwich_carousel.dart';
 import 'package:j_pizza/presentation/screens/formules.dart';
 import 'package:j_pizza/presentation/screens/panier.dart';
-import 'package:j_pizza/presentation/screens/pizza_details.dart';
+import 'package:j_pizza/presentation/screens/carte_pages/pizza_carousel.dart';
 import 'package:j_pizza/presentation/screens/promotion.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,14 +24,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
   final screens = [
     Carte(),
-    Promotion(),
-    Formules(),
-    Panier(),
-    PizzaCarousel(),
-    Boissan()
+    const Formules(),
+    const Promotion(),
+    const Panier(),
+    const PizzaCarousel(),
+    const Entree(),
+    const SandwitchsCarousel(),
+    const BoissanCarousel(),
+    const DessertCarousel()
   ];
   @override
   Widget build(BuildContext context) {

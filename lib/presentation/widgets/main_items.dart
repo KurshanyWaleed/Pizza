@@ -18,7 +18,7 @@ class GetItems extends StatelessWidget {
     return GestureDetector(
       child: GestureDetector(
         onTap: () => BlocProvider.of<ScreenIndicatorCubit>(context)
-            .onChangeScreen(index >= 6 ? 5 : index),
+            .onChangeScreen(index > 8 ? 0 : index),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Container(

@@ -1,18 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:j_pizza/bloC/cubit/screen_indicator_cubit.dart';
 import 'package:j_pizza/bloC/cubit/screen_indicator_state.dart';
 import 'package:j_pizza/constant.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/boissan_carousel.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/carte.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/dessert_carousel.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/entree_carousel.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/pizza_details.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/sandwich_carousel.dart';
-import 'package:j_pizza/presentation/screens/formules.dart';
-import 'package:j_pizza/presentation/screens/panier.dart';
-import 'package:j_pizza/presentation/screens/carte_pages/pizza_carousel.dart';
-import 'package:j_pizza/presentation/screens/promotion.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -24,8 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final int _currentIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ScreenIndicatorCubit, ScreenIndicator>(
@@ -34,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         return Scaffold(
           appBar: AppBar(
             leading: const Icon(
-              Icons.menu,
+              Icons.arrow_back,
               color: Colors.blue,
             ),
             title: state.indicator < 4
@@ -75,22 +64,30 @@ class _HomePageState extends State<HomePage> {
           //   index: _currentIndex,
           // )
 
-          bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Colors.red,
-            type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Colors.blue,
-            selectedFontSize: 18,
-            currentIndex: _currentIndex,
-            onTap: (index) => {
+          bottomNavigationBar: CupertinoTabBar(
+            // selectedItemColor: Colors.red,
+            // type: BottomNavigationBarType.fixed,
+            // unselectedItemColor: Colors.blue,
+            // selectedFontSize: 10,
+            iconSize: 30,
+            activeColor: Colors.red,
+            currentIndex: state.indicator < navbaritems
+                ? state.indicator
+                : state.indicator <= carteItem
+                    ? 0
+                    : state.indicator <= detailsItem
+                        ? 0
+                        : 0,
+            onTap: (index) {
               BlocProvider.of<ScreenIndicatorCubit>(context)
-                  .onChangeScreen(index, "")
+                  .onChangeScreen(index, "");
             },
             items: const [
               BottomNavigationBarItem(
                 icon: SizedBox(
                     child: Image(
                   image: AssetImage(
-                    "assets/pizza.png",
+                    "assets/pizza_i.png",
                   ),
                   height: 40,
                 )),
@@ -100,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                 icon: SizedBox(
                     child: Image(
                   image: AssetImage(
-                    "assets/pizza_with_coke.png",
+                    "assets/cola_i2.png",
                   ),
                   height: 40,
                 )),

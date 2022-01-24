@@ -1,6 +1,4 @@
 import "package:flutter/material.dart";
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:j_pizza/bloC/cubit/screen_indicator_cubit.dart';
 
 class RecomendPizzaCrad extends StatelessWidget {
   const RecomendPizzaCrad(
@@ -9,102 +7,96 @@ class RecomendPizzaCrad extends StatelessWidget {
       required this.title,
       required this.details,
       required this.price,
-      required this.index,
+      //   required this.index,
       required this.onPress})
       : super(key: key);
 
   final String image, title, details;
   final double price;
-  final int index;
+  //final int index;
   final void Function() onPress;
 
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: InkWell(
-        onTap: () {
-          BlocProvider.of<ScreenIndicatorCubit>(context)
-              .onChangeScreen(index, title);
-        },
-        child: Card(
-          clipBehavior: Clip.antiAlias,
-          elevation: 16,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8), topRight: Radius.circular(8))),
-          child: Container(
-            height: 1000,
-            child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        elevation: 16,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8), topRight: Radius.circular(8))),
+        child: Container(
+          height: 1000,
+          child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(
+                      image,
+                      width: 450,
+                      height: 250,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
                     children: [
-                      Image.asset(
-                        image,
-                        width: 500,
-                        height: 250,
-                        fit: BoxFit.cover,
+                      Text(
+                        title,
+                        style: const TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                            fontStyle: FontStyle.italic),
                       ),
+                      const SizedBox(height: 5),
+                      Container(
+                          margin: const EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(0),
+                          child: Text(
+                            details,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                                fontSize: 15,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          )),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        price.toString() + " DT",
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      // Container(
+                      //   height: 50,
+                      //   margin: const EdgeInsets.all(10),
+                      //   padding: const EdgeInsets.all(8),
+                      //   decoration: BoxDecoration(
+                      //       color: Colors.blue,
+                      //       borderRadius: BorderRadius.circular(8)),
+                      //   // child: TextButton(
+                      //   //     onPressed: () {},
+                      //   //     child: const Center(
+                      //   //       child: Text(
+                      //   //         "Commender",
+                      //   //         style: TextStyle(color: Colors.white),
+                      //   //       ),
+                      //   //     )),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        Text(
-                          title,
-                          style: const TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                              fontStyle: FontStyle.italic),
-                        ),
-                        SizedBox(height: 20),
-                        Container(
-                            margin: const EdgeInsets.all(10),
-                            padding: const EdgeInsets.all(0),
-                            child: Text(
-                              details,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
-                            )),
-                        const SizedBox(
-                          height: 50,
-                        ),
-                        Text(
-                          price.toString() + " DT",
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        // Container(
-                        //   height: 50,
-                        //   margin: const EdgeInsets.all(10),
-                        //   padding: const EdgeInsets.all(8),
-                        //   decoration: BoxDecoration(
-                        //       color: Colors.blue,
-                        //       borderRadius: BorderRadius.circular(8)),
-                        //   // child: TextButton(
-                        //   //     onPressed: () {},
-                        //   //     child: const Center(
-                        //   //       child: Text(
-                        //   //         "Commender",
-                        //   //         style: TextStyle(color: Colors.white),
-                        //   //       ),
-                        //   //     )),
-                      ],
-                    ),
-                  ),
-                ]),
-          ),
+                ),
+              ]),
         ),
       ),
     );

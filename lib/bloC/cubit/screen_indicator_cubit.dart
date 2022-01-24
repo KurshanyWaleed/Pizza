@@ -6,5 +6,6 @@ class ScreenIndicatorCubit extends Cubit<ScreenIndicator> {
 
   void onChangeScreen(int index, String title) {
     emit(ScreenIndicator(indicator: index, title: title));
+    print(index);
   }
 }

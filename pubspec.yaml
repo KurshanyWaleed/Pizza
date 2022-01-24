@@ -34,6 +34,7 @@ dependencies:
 
 dev_dependencies:
   carousel_slider: ^4.0.0
+  skeletons: ^0.0.3
   flutter_bloc: ^8.0.1
   flutter_lints: ^1.0.0
   flutter_test:
@@ -52,6 +53,7 @@ flutter:
   assets:
     - assets/
     - assets/pizza_images/
+    
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

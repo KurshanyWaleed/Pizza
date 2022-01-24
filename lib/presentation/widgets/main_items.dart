@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:j_pizza/bloC/cubit/screen_indicator_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,22 +23,26 @@ class GetItems extends StatelessWidget {
             .onChangeScreen(index > 8 ? 0 : index, title),
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: Container(
-            padding: const EdgeInsets.all(10),
-            height: 150,
-            width: 150,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.white),
+          child: Card(
+            clipBehavior: Clip.antiAlias,
+            elevation: 16,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
             child: Column(
               children: [
                 Image(
                   image: AssetImage(imagePath),
-                  width: 80,
+                  height: 110,
+                  fit: BoxFit.cover,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Text(title)
+                Text(
+                  title,
+                  style: const TextStyle(
+                      color: Colors.blue, fontWeight: FontWeight.bold),
+                )
               ],
             ),
           ),

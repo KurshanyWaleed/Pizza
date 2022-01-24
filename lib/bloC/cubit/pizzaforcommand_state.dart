@@ -1,6 +1,11 @@
 part of 'pizzaforcommand_cubit.dart';
 
-@immutable
-abstract class PizzaforcommandState {}
-
-class PizzaforcommandInitial extends PizzaforcommandState {}
+class Pizzaforcommand {
+  late final Pizza pizza;
+  //late bool hasCHecked = false;
+  //late double add;
+  Pizzaforcommand({
+    required this.pizza,
+    //required this.hasCHecked
+  });
+}
